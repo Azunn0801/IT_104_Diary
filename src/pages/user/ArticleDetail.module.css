@@ -1,0 +1,68 @@
+.article-card {
+    background-color: #f1f3f5;
+}
+
+.article-card h2 {
+    font-weight: 600;
+}
+
+.stats span {
+    margin-right: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.stats i {
+    margin-left: 0.25rem;
+}
+
+.comment {
+    background-color: #f8f9fa;
+    margin-bottom: 1rem;
+}
+
+.comment .comment-body {
+    position: relative;
+    padding: 1rem;
+    border-radius: .375rem;
+    background: #fff;
+}
+
+.comment .comment-body p {
+    margin-bottom: 0.25rem;
+}
+
+.comment .stats-small span {
+    margin-right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.comment .stats-small i {
+    margin-left: 0.25rem;
+}
+
+.comment .delete-btn {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    cursor: pointer;
+    color: #dc3545;
+}
+
+.comment-box textarea {
+    resize: none;
+}
+
+.article-card {
+    background-color: #f1f3f5;
+}
+
+.article-card h2 {
+    font-weight: 600;
+}
+
+.comment-box textarea {
+    resize: none;
+}

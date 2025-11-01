@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Segoe UI Regular'), url('../assets/fonts/Segoe UI.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Segoe UI Italic'), url('../assets/fonts/Segoe UI Italic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Segoe UI Bold'), url('../assets/fonts/Segoe UI Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Segoe UI Bold Italic'), url('../assets/fonts/Segoe UI Bold Italic.woff') format('woff');
+}
+
+.register-page {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-image: url('../../assets/register-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.register-page .container {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 50px;
+}
+
+.register-page .content {
+    color: white;
+    max-width: 600px;
+}
+
+.register-page .content h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 100px;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.register-page .content .subtitle {
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.register-page .signup-form {
+    background: #e7e8ea;
+    padding: 30px 30px 30px 50px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.register-page .signup-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-page .name-row {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 15px;
+}
+
+.register-page .signup-form input {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.register-page .name-row input {
+    flex: 1;
+}
+
+.register-page .signup-form button {
+    width: 30%;
+    padding: 12px;
+    background-color: #0D6EFD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-page .signup-form button:hover {
+    background-color: #0056b3;
+}
+
+.register-page .login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.register-page .login-link a {
+    color: #e74c3c;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.register-page b {
+    color: #000000;
+}
