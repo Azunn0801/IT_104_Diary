@@ -1,9 +1,30 @@
 import apiClient from './apiClient';
 import type { Post, NewPostData } from '../types/Post';
 
-export const getAllPosts = async (): Promise<Post[]> => {
-  const response = await apiClient.get<Post[]>('/posts?_expand=user&_expand=category');
-  return response.data;
+export interface PostsPaginatedResponse {
+  data: Post[];
+  totalCount: number;
+}
+
+export const getAllPosts = async (
+  page: number, 
+  pageSize: number,
+  categoryId: number | null
+): Promise<PostsPaginatedResponse> => {
+  
+  let url = `/posts?_page=${page}&_limit=${pageSize}&_expand=user&_expand=category&_sort=date&_order=desc`;
+  
+  if (categoryId) {
+    url += `&categoryId=${categoryId}`;
+  }
+
+  const response = await apiClient.get<Post[]>(url);
+  const totalCount = Number(response.headers['x-total-count'] || 0);
+
+  return {
+    data: response.data,
+    totalCount: totalCount
+  };
 };
 
 export const getPostById = async (id: number): Promise<Post> => {

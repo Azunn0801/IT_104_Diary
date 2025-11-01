@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "fullName": "Olivia Rhye",
       "username": "olivia",
       "email": "olivia@untitled.com",
@@ -10,7 +10,7 @@
       "isAdmin": true
     },
     {
-      "id": 2,
+      "id": "2",
       "fullName": "Phoenix Baker",
       "username": "phoenix",
       "email": "phoenix@untitled.com",
@@ -19,7 +19,7 @@
       "isAdmin": false
     },
     {
-      "id": 3,
+      "id": "3",
       "fullName": "Lana Steiner",
       "username": "lana",
       "email": "lana@untitled.com",
@@ -28,7 +28,7 @@
       "isAdmin": false
     },
     {
-      "id": 4,
+      "id": "4",
       "fullName": "Demi Wilkinson",
       "username": "demi",
       "email": "demi@untitled.com",
@@ -37,7 +37,7 @@
       "isAdmin": false
     },
     {
-      "id": 5,
+      "id": "5",
       "fullName": "Candice Wu",
       "username": "candice",
       "email": "candice@untitled.com",
@@ -46,7 +46,7 @@
       "isAdmin": false
     },
     {
-      "id": 6,
+      "id": "6",
       "fullName": "Natali Craig",
       "username": "natali",
       "email": "natali@untitled.com",
@@ -55,7 +55,7 @@
       "isAdmin": false
     },
     {
-      "id": 7,
+      "id": "7",
       "fullName": "Drew Cano",
       "username": "drew",
       "email": "drew@untitled.com",
@@ -64,7 +64,7 @@
       "isAdmin": false
     },
     {
-      "id": 8,
+      "id": "8",
       "fullName": "Orlando Diggs",
       "username": "orlando",
       "email": "orlando@untitled.com",
@@ -73,7 +73,7 @@
       "isAdmin": false
     },
     {
-      "id": 9,
+      "id": "9",
       "fullName": "Andi Lane",
       "username": "andi",
       "email": "andi@untitled.com",
@@ -82,7 +82,7 @@
       "isAdmin": false
     },
     {
-      "id": 10,
+      "id": "10",
       "fullName": "Kate Morrison",
       "username": "kate",
       "email": "kate@untitled.com",
@@ -93,37 +93,37 @@
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Công nghệ"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Đời sống"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Học tập"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Daily Journal"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Work & Career"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Personal Thoughts"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Emotions & Feelings"
     }
   ],
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Tìm hiểu về React và Redux Toolkit",
       "content": "React là một thư viện JavaScript phổ biến... RTK Query giúp việc gọi API trở nên đơn giản hơn bao giờ hết.",
       "pictureUrl": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070",
@@ -136,7 +136,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "5 mẹo để code sạch hơn",
       "content": "Code sạch không chỉ giúp bạn mà còn giúp đồng nghiệp... 1. Đặt tên biến rõ ràng. 2. Nguyên tắc DRY...",
       "pictureUrl": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070",
@@ -148,7 +148,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "A Productive Day at Work",
       "content": "Today was a really productive day at work. I managed to finish a report ahead of schedule and received positive feedback from my manager.",
       "pictureUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070",
@@ -162,7 +162,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "My First Job Interview Experience",
       "content": "I had my first job interview today! I was nervous at first, but as the conversation went on, I felt more confident.",
       "pictureUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974",
@@ -177,7 +177,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Overthinking Everything",
       "content": "Lately, I have been overthinking everything. From small decisions to bigger life choices. I know I should trust myself more.",
       "pictureUrl": "https://images.unsplash.com/photo-1589110439369-03c02821b06c?q=80&w=2070",
@@ -189,7 +189,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "How collaboration makes us better designers",
       "content": "Our teams are stronger, and our individual designs better, when we collaborate. Our individual designs stronger, and our teams better.",
       "pictureUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1974",
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Our top 10 JavaScript frameworks to use",
       "content": "JavaScript frameworks make development easy with extensive features and functionalities. Here are our top 10 picks for 2025.",
       "pictureUrl": "https://images.unsplash.com/photo-1610986602538-43b683d7c744?q=80&w=2069",
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Podcast: Creating a better CX Community",
       "content": "Starting a community doesn't need to be complicated, but how do you get started? Listen to our latest podcast episode on CX.",
       "pictureUrl": "https://images.unsplash.com/photo-1590602843685-391d41c39feb?q=80&w=1974",
@@ -232,7 +232,7 @@
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "content": "Bài viết rất hay và chi tiết!",
       "date": "2025-10-28T11:00:00Z",
       "userId": 2,
@@ -244,7 +244,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "content": "Cảm ơn bạn nhé!",
       "date": "2025-10-28T11:05:00Z",
       "userId": 1,
@@ -253,7 +253,7 @@
       "likes": []
     },
     {
-      "id": 3,
+      "id": "3",
       "content": "Mình cũng đang học RTK Query, bài này rất hữu ích.",
       "date": "2025-10-28T12:00:00Z",
       "userId": 4,
@@ -264,7 +264,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "content": "Mẹo số 1 rất quan trọng!",
       "date": "2025-10-29T10:00:00Z",
       "userId": 3,
@@ -273,7 +273,7 @@
       "likes": []
     },
     {
-      "id": 5,
+      "id": "5",
       "content": "Great summary of the day.",
       "date": "2025-02-25T15:00:00Z",
       "userId": 1,
@@ -284,11 +284,20 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "content": "I can relate to the overthinking part!",
       "date": "2025-02-23T12:00:00Z",
       "userId": 8,
       "postId": 5,
+      "parentId": null,
+      "likes": []
+    },
+    {
+      "id": "8d0a",
+      "content": "aeetwet",
+      "postId": "8",
+      "userId": 1,
+      "date": "2025-11-01T16:50:23.850Z",
       "parentId": null,
       "likes": []
     }

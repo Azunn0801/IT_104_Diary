@@ -9,12 +9,11 @@ export interface UsersPaginatedResponse {
 export const getAllUsers = async (
   curPage: number, 
   pageSize: number,
-  sortKey: string, // <-- Thêm khóa sort
-  sortOrder: 'asc' | 'desc' // <-- Thêm thứ tự sort
+  sortKey: string,
+  sortOrder: 'asc' | 'desc'
 ): Promise<UsersPaginatedResponse> => {
   
   const response = await apiClient.get<User[]>(
-    // Thêm _sort và _order vào URL
     `/users?_page=${curPage}&_limit=${pageSize}&_sort=${sortKey}&_order=${sortOrder}`
   );
   

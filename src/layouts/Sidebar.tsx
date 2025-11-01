@@ -2,15 +2,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.module.css";
 import { FaFile, FaSignOutAlt, FaFolder } from "react-icons/fa";
-
-const AUTH_KEY = 'loggedInUser';
+import { logout } from "../utils/auth";
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    if (window.confirm("Bạn có chắc chắn muốn đăng xuất?")) {
-      localStorage.removeItem(AUTH_KEY);
+    if (window.confirm("Are you sure want to log out?")) {
+      logout();
       navigate('/login');
     }
   };
@@ -28,7 +27,7 @@ const Sidebar: React.FC = () => {
           <FaFile className="me-2" /> Manage Posts
         </Link>
       </button>
-      
+
       <button className="sidebar-btn w-100" onClick={handleLogout}>
         <FaSignOutAlt className="me-2" /> Log out
       </button>
