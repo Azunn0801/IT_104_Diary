@@ -6,10 +6,18 @@ export interface UsersPaginatedResponse {
   totalCount: number;
 }
 
-export const getAllUsers = async (curPage: number, pageSize: number): Promise<UsersPaginatedResponse> => {
+export const getAllUsers = async (
+  curPage: number, 
+  pageSize: number,
+  sortKey: string, // <-- Thêm khóa sort
+  sortOrder: 'asc' | 'desc' // <-- Thêm thứ tự sort
+): Promise<UsersPaginatedResponse> => {
+  
   const response = await apiClient.get<User[]>(
-    `/users?_page=${curPage}&_limit=${pageSize}`
+    // Thêm _sort và _order vào URL
+    `/users?_page=${curPage}&_limit=${pageSize}&_sort=${sortKey}&_order=${sortOrder}`
   );
+  
   const totalCount = Number(response.headers['x-total-count'] || 0)
 
   return  {

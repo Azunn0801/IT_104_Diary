@@ -1,6 +1,6 @@
-import { User } from './User';
-import { Category } from './Category';
-import { Comment } from './Comment';
+import type { User } from './User';
+import type { Category } from './Category';
+import type { Comment } from './Comment';
 
 export interface Post {
   id: number;

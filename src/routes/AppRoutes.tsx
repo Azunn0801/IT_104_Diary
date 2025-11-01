@@ -1,53 +1,59 @@
-import { Route, Routes } from 'react-router-dom'
-import Login from '../pages/auth/Login'
-import Register from '../pages/user/Register'
-import Home from '../pages/user/Home'
-import ManagerPost from '../pages/admin/ManagerPost'
-import Header from '../layouts/Header'
-import ManagerUsers from '../pages/admin/ManagerUser'
+import { Route, Routes, Outlet } from 'react-router-dom';
+import Login from '../pages/auth/Login';
+import Register from '../pages/user/Register';
+import Home from '../pages/user/Home';
+import ManagerPost from '../pages/admin/ManagerPost';
+import Header from '../layouts/Header';
+import ManagerUsers from '../pages/admin/ManagerUser';
+import ArticleDetail from '../pages/user/ArticleDetail';
+import ProtectedRoute from './ProtectedRoutes';
 
-const HomeLayout = () => (
+// 1. Import Sidebar Dũng vừa chỉ định
+import Sidebar from '../layouts/Sidebar'; 
+
+// Layout chung cho người dùng (có Header)
+const UserLayout = () => (
   <>
     <Header />
-    <Home />
+    <Outlet /> 
   </>
-)
+);
 
-const ManagerUserLayout = () => (
+// 2. Sửa AdminLayout để dùng Sidebar
+const AdminLayout = () => (
   <>
     <Header />
-    <ManagerUsers/>
+    <div className="d-flex">
+      {/* Thêm Sidebar vào đây */}
+      <Sidebar /> 
+      {/* Outlet sẽ render ManagerUsers hoặc ManagerPost */}
+      <Outlet /> 
+    </div>
   </>
-)
-
-const ManagerPostLayout = () => (
-  <>
-    <Header />
-    <ManagerPost/>
-  </>
-)
+);
 
 function AppRoutes() {
-
   return (
-    <>
-      <Routes>
-        <Route element={<HomeLayout />}>
-          <Route path='/' element={<Home />} />
-        </Route>
-        <Route element={<ManagerUserLayout />}>
+    <Routes>
+      {/* Route User (Public) */}
+      <Route element={<UserLayout />}>
+        <Route path='/' element={<Home />} />
+        <Route path='/posts/:id' element={<ArticleDetail />} />
+      </Route>
+
+      {/* Route Auth (Không layout) */}
+      <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
+
+      {/* Route Admin (Được bảo vệ) */}
+      <Route element={<ProtectedRoute />}> 
+        <Route element={<AdminLayout />}>  {/* Dùng Layout Admin mới */}
           <Route path='/admin/user-manager' element={<ManagerUsers />} />
+          <Route path='/admin/post-manager' element={<ManagerPost />} />
         </Route>
-        <Route element={<ManagerPostLayout />}>
-          <Route path='/post-manager' element={<ManagerPost />} />
-        </Route>
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/admin/article_manager' element={<ManagerPost />} />
-        <Route path='/admin/user-manager' element={<ManagerUsers />} />
-      </Routes>
-    </>
-  )
+      </Route>
+    </Routes>
+  );
 }
 
-export default AppRoutes
+export default AppRoutes;

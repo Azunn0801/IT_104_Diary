@@ -1,5 +1,5 @@
 import apiClient from './apiClient';
-import { Post, NewPostData } from '../types/Post';
+import type { Post, NewPostData } from '../types/Post';
 
 export const getAllPosts = async (): Promise<Post[]> => {
   const response = await apiClient.get<Post[]>('/posts?_expand=user&_expand=category');

@@ -3,8 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 
 import { getPostById } from '../../services/postService';
 import { createComment } from '../../services/commentService';
-import { Post } from '../../types/Post';
-import { Comment as CommentType, NewCommentData } from '../../types/Comment';
+import type { Post } from '../../types/Post';
+import type { Comment as CommentType, NewCommentData } from '../../types/Comment';
 
 import './ArticleDetail.module.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';

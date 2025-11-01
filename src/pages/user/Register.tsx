@@ -3,7 +3,10 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Toasts from '../../components/Toasts';
 import './Register.module.css';
 import { validEmail } from '../../components/RegEx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { registerUser } from '../../services/authService';
+import type { NewUserData } from '../../types/User';
 
 interface SignUpFormData {
     firstName: string;
@@ -26,6 +29,8 @@ const SignUpPage: React.FC = () => {
     const [toastMessage, setToastMessage] = useState<string>("");
     const [showToast, setShowToast] = useState<boolean>(false);
 
+    const navigate = useNavigate()
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -34,7 +39,7 @@ const SignUpPage: React.FC = () => {
         }));
     };
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setShowToast(false)
         const { firstName, lastName, email, password, confirmPassword } = formData;
@@ -60,7 +65,7 @@ const SignUpPage: React.FC = () => {
             errors.push('Password must be at least 6 characters long.')
         }
 
-        if(errors.length > 0) {
+        if (errors.length > 0) {
             setToastStatus("error")
             setToastMessage(errors.join("\n"))
             setShowToast(true)
@@ -68,11 +73,33 @@ const SignUpPage: React.FC = () => {
             return
         }
 
-        console.log('Form submitted successfully:', formData);
-        setToastStatus("success")
-        setToastMessage("Account created successfully")
-        setShowToast(true)
-        setTimeout(() => setShowToast(false), 2000)
+        const newUserData: NewUserData = {
+            fullName: `${firstName} ${lastName}`,
+            email: email,
+            password: password,
+            avatarUrl: 'https://i.pravatar.cc/150?img=11',
+            isActive: true,
+            role: false,
+        }
+
+        try {
+            await registerUser(newUserData)
+            setToastStatus("success")
+            setToastMessage("\nAccount created successfully! Redirecting to login page")
+            setShowToast(true)
+
+            setTimeout(() => {
+                navigate('/login')
+            }, 2000)
+        }
+        catch (err) {
+            setToastStatus("error")
+            setToastMessage(err.message || "Registration failed")
+            setShowToast(true)
+            setTimeout(() => {
+                setShowToast(false)
+            }, 2000)
+        }
     };
 
     return (

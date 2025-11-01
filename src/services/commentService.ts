@@ -1,5 +1,5 @@
 import apiClient from './apiClient';
-import { Comment, NewCommentData } from '../types/Comment';
+import type { Comment, NewCommentData } from '../types/Comment';
 
 export const getCommentsByPostId = async (postId: number): Promise<Comment[]> => {
   const response = await apiClient.get<Comment[]>(
