@@ -1,4 +1,4 @@
-.login-page body {
+/* body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,9 +6,18 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+} */
+
+#root {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.login-page .split {
+.split {
     display: flex;
     flex-direction: row;
     flex: 1;
@@ -16,32 +25,32 @@
     justify-content: space-evenly;
 }
 
-.login-page .split img {
+.split img {
     width: 50%;
     max-width: 600px;
     height: auto;
 }
 
-.login-page .login-form {
+.login-form {
     width: 50%;
     max-width: 400px;
     padding: 20px;
     text-align: left;
 }
 
-.login-page .login-form p {
+.login-form p {
     font-size: 18px;
     margin-bottom: 10px;
 }
 
-.login-page .login-form .icon-deck {
+.login-form .icon-deck {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.login-page .login-form .icon-deck a {
+.login-form .icon-deck a {
     display: inline-block;
     background-color: #0d6efd;
     padding: 10px;
@@ -49,19 +58,19 @@
     text-decoration: none;
 }
 
-.login-page .login-form .icon-deck img {
+.login-form .icon-deck img {
     width: 20px;
     height: 20px;
     filter: brightness(0) invert(1);
 }
 
-.login-page .login-form .or {
+.login-form .or {
     margin: 10px 0;
     color: #6c757d;
 }
 
-.login-page .login-form input[type="email"],
-.login-page .login-form input[type="password"] {
+.login-form input[type="email"],
+.login-form input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-top: 20px;
@@ -71,7 +80,7 @@
     font-size: 16px;
 }
 
-.login-page .login-form button {
+.login-form button {
     width: 30%;
     padding: 10px;
     background-color: #0d6efd;
@@ -83,14 +92,14 @@
     margin: 20px 0;
 }
 
-.login-page .login-form a {
+.login-form a {
     display: block;
     margin-top: 10px;
     color: #0d6efd;
     text-decoration: underline;
 }
 
-.login-page footer {
+footer {
     padding: 0 50px;
     display: flex;
     justify-content: space-between;
@@ -99,25 +108,25 @@
     align-items: center;
 }
 
-.login-page footer p {
+footer p {
     color: white;
     margin: 0;
 }
 
-.login-page footer .icon-deck {
+footer .icon-deck {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.login-page footer a {
+footer a {
     color: white;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
 }
 
-.login-page footer img {
+footer img {
     width: 20px;
     height: 20px;
     padding: 0 10px;
@@ -125,13 +134,8 @@
     filter: brightness(0) invert(1);
 }
 
-.login-page .login-form > a {
+.login-form>a {
     display: inline;
     color: #DC3545;
     font-weight: bold;
-}
-
-.login-page a > img {
-    width: 20px;
-    height: 20px;
 }

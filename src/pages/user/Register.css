@@ -2,28 +2,28 @@
     font-family: 'Segoe UI';
     font-style: normal;
     font-weight: 400;
-    src: local('Segoe UI Regular'), url('../assets/fonts/Segoe UI.woff') format('woff');
+    src: local('Segoe UI Regular'), url('../../assets/fonts/Segoe UI.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Segoe UI';
     font-style: italic;
     font-weight: 400;
-    src: local('Segoe UI Italic'), url('../assets/fonts/Segoe UI Italic.woff') format('woff');
+    src: local('Segoe UI Italic'), url('../../assets/fonts/Segoe UI Italic.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Segoe UI';
     font-style: normal;
     font-weight: 700;
-    src: local('Segoe UI Bold'), url('../assets/fonts/Segoe UI Bold.woff') format('woff');
+    src: local('Segoe UI Bold'), url('../../assets/fonts/Segoe UI Bold.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Segoe UI';
     font-style: italic;
     font-weight: 700;
-    src: local('Segoe UI Bold Italic'), url('../assets/fonts/Segoe UI Bold Italic.woff') format('woff');
+    src: local('Segoe UI Bold Italic'), url('../../assets/fonts/Segoe UI Bold Italic.woff') format('woff');
 }
 
 .register-page {

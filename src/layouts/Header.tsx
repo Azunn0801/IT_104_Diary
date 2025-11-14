@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link, useNavigate } from "react-router-dom";
-import "./Header.module.css"
+import "./Header.css"
 import { getAuth, logout } from "../utils/auth"; 
 
 const Header: React.FC = () => {

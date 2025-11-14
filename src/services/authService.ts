@@ -12,15 +12,22 @@ export const registerUser = async (userData: NewUserData): Promise<User> => {
   return response.data;
 };
 
-
 export const loginUser = async (email: string, password: string): Promise<User> => {
-  const response = await apiClient.get<User[]>(
-    `/users?email=${email}&password=${password}`
-  );
+  const response = await apiClient.get<User[]>(`/users?email=${email}`);
 
   if (response.data.length === 0) {
     throw new Error('Invalid email or password.');
   }
 
-  return response.data[0]; 
+  const user = response.data[0];
+
+  if (user.password !== password) {
+    throw new Error('Invalid email or password.');
+  }
+
+  if (user.isActive === false) {
+    throw new Error('Your account is locked.');
+  }
+
+  return user; 
 };

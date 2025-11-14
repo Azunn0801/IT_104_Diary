@@ -5,12 +5,12 @@ import type { PaginationProps } from 'antd';
 import './Home.module.css';
 
 import { getAllPosts } from '../../services/postService';
-import { getAllCategories } from '../../services/categoryService'; // Import mới
+import { getAllCategories } from '../../services/categoryService';
 import type { Post } from '../../types/Post';
-import type { Category } from '../../types/Category'; // Import mới
+import type { Category } from '../../types/Category';
 import Footer from '../../layouts/Footer';
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 10;
 
 const truncateText = (text: string, length: number) => {
   if (text.length <= length) return text;
@@ -22,50 +22,43 @@ const formatDate = (dateString: string) => {
 };
 
 function Home() {
-  const [recentPosts, setRecentPosts] = useState<Post[]>([]); // State cho 2 bài mới nhất
-  const [posts, setPosts] = useState<Post[]>([]); // State cho "All Posts"
-  const [categories, setCategories] = useState<Category[]>([]); // State cho các nút lọc
-  
+  const [recentPosts, setRecentPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
-  
-  // State mới: lưu category đang được chọn
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
-  // useEffect này sẽ chạy 1 LẦN để lấy 2 bài mới nhất và danh sách category
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
-        // 1. Lấy 2 bài mới nhất (page=1, pageSize=2, không lọc)
         const recentResponse = await getAllPosts(1, 2, null);
         setRecentPosts(recentResponse.data);
 
-        // 2. Lấy tất cả category
         const categoriesResponse = await getAllCategories();
         setCategories(categoriesResponse);
-        
+
       } catch (err) {
         console.error("Failed to fetch initial data:", err);
-        setError("Không thể tải trang.");
+        setError("Failed to fetch initial data.");
       }
     };
-    
-    fetchInitialData();
-  }, []); // [] = Chỉ chạy 1 lần
 
-  // useEffect này sẽ chạy MỖI KHI 'currentPage' hoặc 'selectedCategory' thay đổi
+    fetchInitialData();
+  }, []);
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         setIsLoading(true);
         setError(null);
-        
-        // Gọi API với trang và category đã chọn
+
         const response = await getAllPosts(currentPage, PAGE_SIZE, selectedCategory);
-        
+
         setPosts(response.data);
         setTotalItems(response.totalCount);
       } catch (err) {
@@ -77,25 +70,23 @@ function Home() {
     };
 
     fetchPosts();
-  }, [currentPage, selectedCategory]); // Chạy lại khi 2 giá trị này thay đổi
+  }, [currentPage, selectedCategory]);
 
   const handlePageChange: PaginationProps['onChange'] = (page) => {
     setCurrentPage(page);
   };
 
-  // Hàm mới: xử lý khi bấm nút lọc
   const handleFilter = (categoryId: number | null) => {
     setSelectedCategory(categoryId);
-    setCurrentPage(1); // Quay về trang 1 khi lọc
+    setCurrentPage(1);
   };
 
-  // Hàm render card bài viết (để tái sử dụng)
   const renderPostCard = (post: Post) => (
     <div className="col-md-6 mb-4" key={post.id}>
       <div className="card h-100">
-        <img 
-          src={post.pictureUrl} 
-          className="card-img-top" 
+        <img
+          src={post.pictureUrl}
+          className="card-img-top"
           alt={post.title}
           style={{ height: '250px', objectFit: 'cover' }}
         />
@@ -103,14 +94,14 @@ function Home() {
           <p className="card-text text-muted small">Date: {formatDate(post.date)}</p>
           <h5 className="card-title">{post.title}</h5>
           <p className="card-text">{truncateText(post.content, 100)}</p>
-          <Link 
-            to={`/posts/${post.id}`} 
+          <Link
+            to={`/posts/${post.id}`}
             className="btn btn-primary mt-auto"
           >
             Read more
           </Link>
-          <span 
-            className="badge bg-primary mt-2" 
+          <span
+            className="badge bg-primary mt-2"
             style={{ alignSelf: 'flex-start' }}
           >
             {post.category?.name}
@@ -123,8 +114,7 @@ function Home() {
   return (
     <>
       <main className="container my-5">
-        
-        {/* === SECTION RECENT POSTS (Động) === */}
+
         <section className="recent-posts">
           <h2 className="text-center mb-4">Recent blog posts</h2>
           <div className="row">
@@ -142,19 +132,17 @@ function Home() {
           </Link>
         </div>
 
-        {/* === SECTION ALL POSTS (Động + Lọc) === */}
         <section className="all-posts">
-          
-          {/* === Nút Lọc Category (Động) === */}
+
           <h2 className="mb-4 d-flex flex-wrap gap-2">
-            <button 
+            <button
               className={`btn btn-sm ${!selectedCategory ? 'btn-primary' : 'btn-outline-primary'}`}
               onClick={() => handleFilter(null)}
             >
               All Posts
             </button>
             {categories.map(cat => (
-              <button 
+              <button
                 key={cat.id}
                 className={`btn btn-sm ${selectedCategory === cat.id ? 'btn-primary' : 'btn-outline-primary'}`}
                 onClick={() => handleFilter(cat.id)}
@@ -163,7 +151,7 @@ function Home() {
               </button>
             ))}
           </h2>
-          
+
           {isLoading ? (
             <div className="text-center">Đang tải bài viết...</div>
           ) : error ? (
@@ -191,7 +179,6 @@ function Home() {
         </nav>
       </main>
 
-      <Footer />
     </>
   );
 }

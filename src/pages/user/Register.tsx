@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Toasts from '../../components/Toasts';
-import './Register.module.css';
+import './Register.css';
 import { validEmail } from '../../components/RegEx';
 import { Link, useNavigate } from 'react-router-dom';
 

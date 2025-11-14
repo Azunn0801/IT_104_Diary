@@ -11,6 +11,7 @@ export interface Post {
   userId: number;
   categoryId: number;
   likes: number[];
+  status: "Public" | "Private";
 
   user?: User;
   category?: Category;

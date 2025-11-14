@@ -33,6 +33,7 @@ function AppRoutes() {
       <Route element={<UserLayout />}>
         <Route path='/' element={<Home />} />
         <Route path='/posts/:id' element={<ArticleDetail />} />
+        <Route path='/admin/post-manager' element={<ManagerPost />} />
       </Route>
 
       <Route path='/register' element={<Register />} />
@@ -41,7 +42,6 @@ function AppRoutes() {
       <Route element={<ProtectedRoute />}> 
         <Route element={<AdminLayout />}>  
           <Route path='/admin/user-manager' element={<ManagerUsers />} />
-          <Route path='/admin/post-manager' element={<ManagerPost />} />
           <Route path='/admin/dashboard' element={<Dashboard />} />
         </Route>
       </Route>

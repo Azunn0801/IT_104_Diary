@@ -3,11 +3,9 @@ import { Pagination } from 'antd';
 import type { PaginationProps } from 'antd';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./ManagerUser.module.css";
-// 1. Import thêm 'updateUser'
+import "./ManagerUser.css";
 import { getAllUsers, updateUser } from "../../services/userService";
 import type { User } from "../../types/User";
-// 2. Import toast Dũng đã tạo
 import { showToast } from "../../utils/toastHelper";
 
 const PAGE_SIZE = 5;
@@ -20,16 +18,13 @@ const ManagerUsers: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
 
-  // 3. Thêm state cho Sắp xếp
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
-  // 4. Cập nhật useEffect
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
         setError(null);
-        // 5. Truyền tham số sort vào API
         const response = await getAllUsers(currentPage, PAGE_SIZE, 'fullName', sortOrder);
         setUsers(response.data);
         setTotalItems(response.totalCount);
@@ -41,20 +36,17 @@ const ManagerUsers: React.FC = () => {
       }
     };
     fetchUsers();
-  }, [currentPage, sortOrder]); // <-- 6. Thêm 'sortOrder' vào dependency
+  }, [currentPage, sortOrder]);
 
   const handlePageChange: PaginationProps['onChange'] = (page) => {
     setCurrentPage(page);
   };
 
-  // 7. Thêm hàm Sắp xếp
   const handleSort = () => {
     setSortOrder(currentOrder => (currentOrder === 'asc' ? 'desc' : 'asc'));
   };
 
-  // 8. Thêm hàm Block/Unblock
   const handleToggleStatus = async (userToUpdate: User) => {
-    // Cập nhật giao diện ngay lập tức (Optimistic UI)
     setUsers(currentUsers =>
       currentUsers.map(u =>
         u.id === userToUpdate.id ? { ...u, isActive: !u.isActive } : u
@@ -62,11 +54,9 @@ const ManagerUsers: React.FC = () => {
     );
 
     try {
-      // Gọi API trong nền
       await updateUser(userToUpdate.id, { isActive: !userToUpdate.isActive });
       showToast("success", `User ${userToUpdate.fullName} has been updated.`);
     } catch (err) {
-      // Nếu API lỗi, trả lại trạng thái cũ
       showToast("error", "Failed to update user status.");
       setUsers(currentUsers =>
         currentUsers.map(u =>
@@ -86,7 +76,6 @@ const ManagerUsers: React.FC = () => {
             <table className="table table-bordered table-hover align-middle mt-3">
               <thead className="table-light">
                 <tr>
-                  {/* 9. Thêm onClick Sắp xếp */}
                   <th onClick={handleSort} style={{ cursor: 'pointer' }}>
                     Name {sortOrder === 'asc' ? '🔼' : '🔽'}
                   </th>
@@ -117,7 +106,6 @@ const ManagerUsers: React.FC = () => {
                         {user.fullName}
                       </td>
                       <td>
-                        {/* 10. Sửa 'user.status' thành 'user.isActive' */}
                         {user.isActive ? (
                           <span className="badge bg-success">Active</span>
                         ) : (
@@ -125,10 +113,8 @@ const ManagerUsers: React.FC = () => {
                         )}
                       </td>
                       <td>{user.email}</td>
-                       {/* 11. Sửa 'user.role' thành 'user.isAdmin' */}
                       <td>{user.isAdmin ? "Admin" : "User"}</td>
                       <td>
-                        {/* 12. Thêm onClick Block/Unblock */}
                         {user.isActive ? (
                           <button 
                             className="btn btn-danger btn-sm"
