@@ -21,15 +21,10 @@ import type { Category } from "../../types/Category";
 import { getAuth } from "../../utils/auth";
 import { showToast } from "../../utils/toastHelper";
 
-const PAGE_SIZE = 10;
-
-const getBase64 = (file: File, callback: (url: string) => void) => {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result as string));
-  reader.readAsDataURL(file);
-};
+const PAGE_SIZE = 5;
 
 const ManagerPost: React.FC = () => {
+  const [isUploading, setIsUploading] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -104,13 +99,48 @@ const ManagerPost: React.FC = () => {
     fileInputRef.current?.click();
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      getBase64(file, (url) => {
-        setPreviewImage(url);
-        setPictureUrl(url);
-      });
+    if (!file) return;
+
+    const objectUrl = URL.createObjectURL(file);
+    setPreviewImage(objectUrl);
+
+    setIsUploading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    
+    const CLOUD_NAME = "djieqgmpj"; 
+    const UPLOAD_PRESET = "it104_diary_upload"; 
+    
+    formData.append("upload_preset", UPLOAD_PRESET);
+    formData.append("folder", "blog_posts");
+
+    try {
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Upload failed");
+      }
+
+      const data = await response.json();
+      
+      setPictureUrl(data.secure_url); 
+      showToast("success", "Upload picture successfully!");
+
+    } catch (err) {
+      console.error("Error uploading image:", err);
+      showToast("error", "Error uploading picture, please try again.");
+      setPreviewImage(""); 
+      setPictureUrl("");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -395,8 +425,9 @@ const ManagerPost: React.FC = () => {
                 type="button" 
                 className="btn btn-success" 
                 onClick={handleSave}
+                disabled={isUploading}
               >
-                {editingPost ? 'Save Changes' : 'Add'}
+                {isUploading ? "Uploading..." : (editingPost ? 'Save Changes' : 'Add')}
               </button>
             </div>
           </div>

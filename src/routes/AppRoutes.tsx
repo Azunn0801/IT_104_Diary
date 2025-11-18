@@ -9,6 +9,7 @@ import ArticleDetail from '../pages/user/ArticleDetail';
 import ProtectedRoute from './ProtectedRoutes';
 import Sidebar from '../layouts/Sidebar'; 
 import Dashboard from '../pages/admin/Dashboard';
+import ManagerCategory from '../pages/admin/ManagerCategory';
 
 const UserLayout = () => (
   <>
@@ -43,6 +44,7 @@ function AppRoutes() {
         <Route element={<AdminLayout />}>  
           <Route path='/admin/user-manager' element={<ManagerUsers />} />
           <Route path='/admin/dashboard' element={<Dashboard />} />
+          <Route path="category-manager" element={<ManagerCategory />} />
         </Route>
       </Route>
     </Routes>

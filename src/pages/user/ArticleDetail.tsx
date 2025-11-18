@@ -70,11 +70,11 @@ function ArticleDetail() {
         try {
           setIsLoading(true);
           setError(null);
-          const postData = await getPostById(Number(id));
+          const postData = await getPostById(id);
           setPost(postData);
         } catch (err) {
           console.error(err);
-          setError('Không thể tải bài viết. Vui lòng thử lại.');
+          setError('Cannot load post, please try again later.');
         } finally {
           setIsLoading(false);
         }
@@ -108,8 +108,8 @@ function ArticleDetail() {
       setNewCommentText("");
 
     } catch (err) {
-      console.error("Lỗi khi đăng bình luận:", err);
-      alert("Không thể đăng bình luận. Vui lòng thử lại.");
+      console.error("Error posting comment:", err);
+      alert("Cannot upload comment, please try again later.");
     }
   };
 
@@ -126,7 +126,7 @@ function ArticleDetail() {
   }
 
   if (!post) {
-    return <div className="container py-4">Không tìm thấy bài viết.</div>;
+    return <div className="container py-4">No article found.</div>;
   }
 
   return (
@@ -156,7 +156,6 @@ function ArticleDetail() {
 
             <div className="stats text-muted small mb-2">
               <span id="post-date">{new Date(post.date).toLocaleDateString()}</span>
-              {/* Thêm `bg-secondary` để category hiển thị đẹp hơn */}
               <span id="post-category" className="badge bg-secondary ms-2">{post.category?.name}</span>
             </div>
             <div className="stats text-muted small mb-3">
@@ -188,7 +187,7 @@ function ArticleDetail() {
                     allComments={post.comments || []}
                   />
                 )) 
-              : <p>Chưa có bình luận nào.</p>
+              : <p>No comment.</p>
             }
           </div>
         )}
@@ -197,8 +196,8 @@ function ArticleDetail() {
           <textarea 
             id="newCommentText" 
             className="form-control mb-2" 
-            rows="3" 
-            placeholder="Viết bình luận..."
+            rows={3}
+            placeholder="Write comment..."
             value={newCommentText}
             onChange={(e) => setNewCommentText(e.target.value)}
           ></textarea>
@@ -208,7 +207,7 @@ function ArticleDetail() {
             onClick={handlePostComment}
             disabled={!newCommentText.trim()}
           >
-            Đăng bình luận
+            Post comment
           </button>
         </div>
 
