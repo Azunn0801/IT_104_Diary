@@ -137,7 +137,7 @@ function ArticleDetail() {
 
         <div className="d-flex align-items-start mb-4">
           <img 
-            src={post.user?.avatarUrl || '../assets/images/user.png'} 
+            src={post.user?.avatarUrl || '../../assets/images/user.png'} 
             alt={post.user?.fullName} 
             className="rounded-circle me-3" 
             width="50" height="50" 

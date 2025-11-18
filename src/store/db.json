@@ -158,7 +158,7 @@
       "pictureUrl": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070",
       "date": "2025-10-28T10:00:00Z",
       "userId": "1",
-      "categoryId": 1,
+      "categoryId": "1",
       "likes": [
         2,
         4
@@ -172,7 +172,7 @@
       "pictureUrl": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070",
       "date": "2025-10-29T09:30:00Z",
       "userId": "2",
-      "categoryId": 3,
+      "categoryId": "3",
       "likes": [
         1
       ]
@@ -185,7 +185,7 @@
       "pictureUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070",
       "date": "2025-02-25T09:00:00Z",
       "userId": "3",
-      "categoryId": 4,
+      "categoryId": "4",
       "likes": [
         1,
         5,
@@ -200,7 +200,7 @@
       "pictureUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974",
       "date": "2025-02-24T14:00:00Z",
       "userId": "4",
-      "categoryId": 5,
+      "categoryId": "5",
       "likes": [
         2,
         6,
@@ -216,7 +216,7 @@
       "pictureUrl": "https://images.unsplash.com/photo-1589110439369-03c02821b06c?q=80&w=2070",
       "date": "2025-02-23T11:00:00Z",
       "userId": "5",
-      "categoryId": 6,
+      "categoryId": "6",
       "likes": [
         1
       ]
@@ -229,7 +229,7 @@
       "pictureUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1974",
       "date": "2025-02-18T16:00:00Z",
       "userId": "6",
-      "categoryId": 5,
+      "categoryId": "5",
       "likes": [
         3,
         9
@@ -243,7 +243,7 @@
       "pictureUrl": "https://images.unsplash.com/photo-1610986602538-43b683d7c744?q=80&w=2069",
       "date": "2025-02-15T10:00:00Z",
       "userId": "7",
-      "categoryId": 1,
+      "categoryId": "1",
       "likes": [
         1,
         2,
@@ -260,7 +260,7 @@
       "pictureUrl": "https://images.unsplash.com/photo-1590602843685-391d41c39feb?q=80&w=1974",
       "date": "2025-02-05T08:00:00Z",
       "userId": "8",
-      "categoryId": 7,
+      "categoryId": "7",
       "likes": [
         10
       ]
@@ -282,8 +282,8 @@
       "id": "1",
       "content": "Bài viết rất hay và chi tiết!",
       "date": "2025-10-28T11:00:00Z",
-      "userId": 2,
-      "postId": 1,
+      "userId": "2",
+      "postId": "1",
       "parentId": null,
       "likes": [
         3,
@@ -294,17 +294,17 @@
       "id": "2",
       "content": "Cảm ơn bạn nhé!",
       "date": "2025-10-28T11:05:00Z",
-      "userId": 1,
-      "postId": 1,
-      "parentId": 1,
+      "userId": "1",
+      "postId": "1",
+      "parentId": "1",
       "likes": []
     },
     {
       "id": "3",
       "content": "Mình cũng đang học RTK Query, bài này rất hữu ích.",
       "date": "2025-10-28T12:00:00Z",
-      "userId": 4,
-      "postId": 1,
+      "userId": "4",
+      "postId": "1",
       "parentId": null,
       "likes": [
         1
@@ -314,8 +314,8 @@
       "id": "4",
       "content": "Mẹo số 1 rất quan trọng!",
       "date": "2025-10-29T10:00:00Z",
-      "userId": 3,
-      "postId": 2,
+      "userId": "3",
+      "postId": "2",
       "parentId": null,
       "likes": []
     },
@@ -323,8 +323,8 @@
       "id": "5",
       "content": "Great summary of the day.",
       "date": "2025-02-25T15:00:00Z",
-      "userId": 1,
-      "postId": 3,
+      "userId": "1",
+      "postId": "3",
       "parentId": null,
       "likes": [
         9
@@ -334,8 +334,8 @@
       "id": "6",
       "content": "I can relate to the overthinking part!",
       "date": "2025-02-23T12:00:00Z",
-      "userId": 8,
-      "postId": 5,
+      "userId": "8",
+      "postId": "5",
       "parentId": null,
       "likes": []
     },
@@ -343,7 +343,7 @@
       "id": "8d0a",
       "content": "aeetwet",
       "postId": "8",
-      "userId": 1,
+      "userId": "1",
       "date": "2025-11-01T16:50:23.850Z",
       "parentId": null,
       "likes": []
@@ -352,7 +352,7 @@
       "id": "3c18",
       "content": " vzsgdshdg",
       "postId": "7",
-      "userId": 1,
+      "userId": "1",
       "date": "2025-11-03T15:02:09.325Z",
       "parentId": null,
       "likes": []
@@ -361,7 +361,7 @@
       "id": "0d1a",
       "content": "46i4i",
       "postId": "add6",
-      "userId": 1,
+      "userId": "1",
       "date": "2025-11-18T18:29:08.106Z",
       "parentId": null,
       "likes": []
@@ -370,7 +370,7 @@
       "id": "6f78",
       "content": "ưeegwe",
       "postId": "add6",
-      "userId": 1,
+      "userId": "1",
       "date": "2025-11-18T18:29:10.106Z",
       "parentId": null,
       "likes": []

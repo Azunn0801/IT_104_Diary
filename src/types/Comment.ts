@@ -4,9 +4,9 @@ export interface Comment {
   id: string;
   content: string;
   date: string;
-  userId: number;
-  postId: number;
-  parentId: number | null; 
+  userId: string;
+  postId: string;
+  parentId: string | null; 
   likes: number[];
 
   user?: User;

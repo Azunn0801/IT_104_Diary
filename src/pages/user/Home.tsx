@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Pagination } from 'antd';
 import type { PaginationProps } from 'antd';
-import './Home.module.css';
-import HomeFooter from '../../layouts/HomeFooter';
+
+import styles from './Home.module.css';
 
 import { getAllPosts } from '../../services/postService';
 import { getAllCategories } from '../../services/categoryService';
 import type { Post } from '../../types/Post';
 import type { Category } from '../../types/Category';
-import Footer from '../../layouts/Footer';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 
 const truncateText = (text: string, length: number) => {
   if (text.length <= length) return text;
@@ -37,12 +36,11 @@ function Home() {
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
-        const recentResponse = await getAllPosts(1, 2, null);
+        const recentResponse = await getAllPosts(1, 2, null, undefined, "Public");
         setRecentPosts(recentResponse.data);
 
         const categoriesResponse = await getAllCategories();
         setCategories(categoriesResponse);
-
       } catch (err) {
         console.error("Failed to fetch initial data:", err);
         setError("Failed to fetch initial data.");
@@ -64,7 +62,7 @@ function Home() {
         setTotalItems(response.totalCount);
       } catch (err) {
         console.error("Failed to fetch posts:", err);
-        setError("Cannot load any post.");
+        setError("Cannot load article.");
       } finally {
         setIsLoading(false);
       }
@@ -114,27 +112,26 @@ function Home() {
 
   return (
     <>
-      <main className="container">
+      <main className="container my-5">
 
         <section className="recent-posts">
-          <p className='posts-title'>Recent blog posts</p>
+          <h2 className="text-center mb-4">Recent blog posts</h2>
           <div className="row">
             {recentPosts.length > 0 ? (
               recentPosts.map(post => renderPostCard(post))
             ) : (
-              <p className="text-center">There's no recent post.</p>
+              <p className="text-center">No recent posts.</p>
             )}
           </div>
         </section>
 
         <div className="text-center my-4">
           <Link to="/admin/post-manager" style={{ textDecoration: 'none', color: 'white' }}>
-            <button className="btn btn-danger">ADD NEW ARTICLE</button>
+            <button className={`btn ${styles['btn-white']}`}>ADD NEW ARTICLE</button>
           </Link>
         </div>
 
         <section className="all-posts">
-
           <h2 className="mb-4 d-flex flex-wrap gap-2">
             <button
               className={`btn btn-sm ${!selectedCategory ? 'btn-primary' : 'btn-outline-primary'}`}
@@ -154,13 +151,13 @@ function Home() {
           </h2>
 
           {isLoading ? (
-            <div className="text-center">Đang tải bài viết...</div>
+            <div className="text-center">Loading article...</div>
           ) : error ? (
             <div className="text-center text-danger">{error}</div>
           ) : (
             <div className="row">
               {posts.length === 0 ? (
-                <p className="text-center">Cannot find any post.</p>
+                <p className="text-center">No article found.</p>
               ) : (
                 posts.map(post => renderPostCard(post))
               )}
@@ -180,7 +177,55 @@ function Home() {
         </nav>
       </main>
 
-      <HomeFooter />
+      <footer className={`${styles.footer} bg-light`}>
+        <div className={`container ${styles['footer-content']}`}>
+          
+          <div className={`${styles['footer-col']} ${styles['footer-logo']}`}>
+            <h4 className={styles['site-logo']}>MY BLOG</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum aliquet accumsan porta lectus
+              ridiculus in mattis. Netus sodales in volutpat ullamcorper amet adipiscing fermentum.
+            </p>
+          </div>
+
+          <div className={styles['footer-col']}>
+            <h4>Company</h4>
+            <ul className="list-unstyled">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Works</a></li>
+              <li><a href="#">Career</a></li>
+            </ul>
+          </div>
+
+          <div className={styles['footer-col']}>
+            <h4>Help</h4>
+            <ul className="list-unstyled">
+              <li><a href="#">Customer Support</a></li>
+              <li><a href="#">Delivery Details</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div className={styles['footer-col']}>
+            <h4>Resources</h4>
+            <ul className="list-unstyled">
+              <li><a href="#">Free eBooks</a></li>
+              <li><a href="#">Development Tutorial</a></li>
+              <li><a href="#">How to - Blog</a></li>
+              <li><a href="#">Youtube Playlist</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className={`${styles['footer-social']} text-center mt-3`}>
+          <a href="#"><i className="fab fa-twitter"></i></a>
+          <a href="#"><i className="fab fa-facebook-f"></i></a>
+          <a href="#"><i className="fab fa-instagram"></i></a>
+          <a href="#"><i className="fab fa-github"></i></a>
+        </div>
+      </footer>
     </>
   );
 }
