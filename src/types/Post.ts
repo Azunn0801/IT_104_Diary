@@ -3,13 +3,13 @@ import type { Category } from './Category';
 import type { Comment } from './Comment';
 
 export interface Post {
-  id: number;
+  id: string;
   title: string;
   content: string;
   pictureUrl: string;
-  date: string; 
-  userId: number;
-  categoryId: number;
+  date: string;
+  userId: string;
+  categoryId: string;
   likes: number[];
   status: "Public" | "Private";
 

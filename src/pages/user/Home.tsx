@@ -10,7 +10,7 @@ import type { Post } from '../../types/Post';
 import type { Category } from '../../types/Category';
 import Footer from '../../layouts/Footer';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 
 const truncateText = (text: string, length: number) => {
   if (text.length <= length) return text;

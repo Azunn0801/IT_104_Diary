@@ -27,7 +27,7 @@ export const getAllPosts = async (
   };
 };
 
-export const getPostById = async (id: number): Promise<Post> => {
+export const getPostById = async (id: string): Promise<Post> => {
   const response = await apiClient.get<Post>(
     `/posts/${id}?_expand=user&_expand=category&_embed=comments`
   );
@@ -39,11 +39,11 @@ export const createPost = async (postData: NewPostData): Promise<Post> => {
   return response.data;
 };
 
-export const updatePost = async (id: number, postData: Partial<Post>): Promise<Post> => {
+export const updatePost = async (id: string, postData: Partial<Post>): Promise<Post> => {
   const response = await apiClient.patch<Post>(`/posts/${id}`, postData);
   return response.data;
 };
 
-export const deletePost = async (id: number): Promise<void> => {
+export const deletePost = async (id: string): Promise<void> => {
   await apiClient.delete(`/posts/${id}`);
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./ManagerPost.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -52,11 +52,11 @@ const ManagerPost: React.FC = () => {
 
   const currentUser = getAuth();
 
-  const fetchPostsAndCategories = async () => {
+  const fetchPostsAndCategories = useCallback(async () => {
     try {
       setIsLoading(true);
       setError(null);
-      const postResponse = await getAllPosts(currentPage, PAGE_SIZE, null, '');
+      const postResponse = await getAllPosts(currentPage, PAGE_SIZE, null);
       const categoryResponse = await getAllCategories();
       
       setPosts(postResponse.data);
@@ -67,11 +67,11 @@ const ManagerPost: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [currentPage]);
 
   useEffect(() => {
     fetchPostsAndCategories();
-  }, [currentPage]);
+  }, [fetchPostsAndCategories]);
 
   const handlePageChange: PaginationProps['onChange'] = (page) => {
     setCurrentPage(page);
@@ -149,29 +149,29 @@ const ManagerPost: React.FC = () => {
       showToast("error", "You cannot delete this post.");
       return;
     }
-    if (window.confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
+    if (window.confirm("Are you sure want to delete this post?")) {
       try {
         await deletePost(post.id);
-        showToast("success", "Xóa bài viết thành công!");
+        showToast("success", "Deleted successfully!");
         fetchPostsAndCategories();
       } catch (err) {
-        showToast("error", "Lỗi, không thể xóa bài viết.");
+        showToast("error", "Cannot delete this post.");
       }
     }
   };
 
   const handleStatusChange = async (post: Post, newStatus: "Public" | "Private") => {
     if (currentUser?.id !== post.userId) {
-      showToast("error", "Bạn không có quyền sửa bài này.");
+      showToast("error", "You don't have permission to delete this post.");
       fetchPostsAndCategories();
       return;
     }
     try {
       await updatePost(post.id, { status: newStatus });
-      showToast("success", "Cập nhật trạng thái thành công.");
+      showToast("success", "Update status successfully.");
       fetchPostsAndCategories();
     } catch (err) {
-      showToast("error", "Lỗi, không thể cập nhật.");
+      showToast("error", "Cannot update this post.");
     }
   };
 

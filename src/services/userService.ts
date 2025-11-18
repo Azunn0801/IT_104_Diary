@@ -25,7 +25,7 @@ export const getAllUsers = async (
   }
 };
 
-export const getUserById = async (id: number): Promise<User> => {
+export const getUserById = async (id: string): Promise<User> => {
   const response = await apiClient.get<User>(`/users/${id}`);
   return response.data;
 };
@@ -35,11 +35,11 @@ export const createUser = async (userData: NewUserData): Promise<User> => {
   return response.data;
 };
 
-export const updateUser = async (id: number, userData: Partial<User>): Promise<User> => {
+export const updateUser = async (id: string, userData: Partial<User>): Promise<User> => {
   const response = await apiClient.patch<User>(`/users/${id}`, userData);
   return response.data;
 };
 
-export const deleteUser = async (id: number): Promise<void> => {
+export const deleteUser = async (id: string): Promise<void> => {
   await apiClient.delete(`/users/${id}`);
 };
