@@ -9,20 +9,34 @@ export interface PostsPaginatedResponse {
 export const getAllPosts = async (
   page: number, 
   pageSize: number,
-  categoryId: number | null
+  categoryId: number | null | string,
+  userId?: string
 ): Promise<PostsPaginatedResponse> => {
   
-  let url = `/posts?_page=${page}&_limit=${pageSize}&_expand=user&_expand=category&_sort=date&_order=desc`;
+  let url = `/posts?_expand=user&_expand=category`;
   
   if (categoryId) {
     url += `&categoryId=${categoryId}`;
   }
 
+  if (userId) {
+    url += `&userId=${userId}`;
+  }
+
   const response = await apiClient.get<Post[]>(url);
-  const totalCount = Number(response.headers['x-total-count'] || 0);
+  const allPosts = response.data;
+
+  allPosts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
+  const totalCount = allPosts.length;
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedData = allPosts.slice(startIndex, endIndex);
 
   return {
-    data: response.data,
+    data: paginatedData,
     totalCount: totalCount
   };
 };

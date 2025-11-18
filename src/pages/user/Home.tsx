@@ -116,7 +116,7 @@ function Home() {
       <main className="container my-5">
 
         <section className="recent-posts">
-          <h2 className="text-center mb-4">Recent blog posts</h2>
+          <p className='posts-title'>Recent blog posts</p>
           <div className="row">
             {recentPosts.length > 0 ? (
               recentPosts.map(post => renderPostCard(post))

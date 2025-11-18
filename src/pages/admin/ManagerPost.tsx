@@ -56,18 +56,20 @@ const ManagerPost: React.FC = () => {
     try {
       setIsLoading(true);
       setError(null);
-      const postResponse = await getAllPosts(currentPage, PAGE_SIZE, null);
+      
+      const postResponse = await getAllPosts(currentPage, PAGE_SIZE, null, currentUser?.id);
+      
       const categoryResponse = await getAllCategories();
       
       setPosts(postResponse.data);
       setTotalItems(postResponse.totalCount);
       setCategories(categoryResponse);
     } catch (err) {
-      setError("Không thể tải dữ liệu.");
+      setError("Cannot load data.");
     } finally {
       setIsLoading(false);
     }
-  }, [currentPage]);
+  }, [currentPage, currentUser?.id]);
 
   useEffect(() => {
     fetchPostsAndCategories();
@@ -122,7 +124,7 @@ const ManagerPost: React.FC = () => {
 
     const postData: Omit<NewPostData, 'userId' | 'date' | 'likes'> = {
       title,
-      categoryId: Number(categoryId),
+      categoryId: String(categoryId),
       content,
       status,
       pictureUrl,

@@ -14,13 +14,18 @@ export const getAllUsers = async (
 ): Promise<UsersPaginatedResponse> => {
   
   const response = await apiClient.get<User[]>(
-    `/users?_page=${curPage}&_limit=${pageSize}&_sort=${sortKey}&_order=${sortOrder}`
+    `/users?_sort=${sortKey}&_order=${sortOrder}`
   );
   
-  const totalCount = Number(response.headers['x-total-count'] || 0)
+  const allUsers = response.data;
+
+  const totalCount = allUsers.length;
+  const startIndex = (curPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedData = allUsers.slice(startIndex, endIndex);
 
   return  {
-    data: response.data,
+    data: paginatedData,
     totalCount: totalCount
   }
 };
