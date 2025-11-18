@@ -10,7 +10,7 @@ import { getAllCategories } from '../../services/categoryService';
 import type { Post } from '../../types/Post';
 import type { Category } from '../../types/Category';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 
 const truncateText = (text: string, length: number) => {
   if (text.length <= length) return text;

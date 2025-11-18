@@ -266,14 +266,14 @@
       ]
     },
     {
-      "id": "add6",
-      "title": "Playing games",
-      "categoryId": "4",
-      "content": "Today I am playikng minecraft",
+      "id": "43ef",
+      "title": "qfqwfqw",
+      "categoryId": "1",
+      "content": "qgqgwqw",
       "status": "Public",
-      "pictureUrl": "https://res.cloudinary.com/djieqgmpj/image/upload/v1763487425/blog_posts/bj1rbkyshb5gwajizs1m.png",
+      "pictureUrl": "https://res.cloudinary.com/djieqgmpj/image/upload/v1763495961/blog_posts/r66hql3gqotriyeexo3o.png",
       "userId": "1",
-      "date": "2025-11-18T17:38:29.206Z",
+      "date": "2025-11-18T19:59:29.336Z",
       "likes": []
     }
   ],
@@ -360,7 +360,7 @@
     {
       "id": "0d1a",
       "content": "46i4i",
-      "postId": "add6",
+      "postId": null,
       "userId": "1",
       "date": "2025-11-18T18:29:08.106Z",
       "parentId": null,
@@ -369,7 +369,7 @@
     {
       "id": "6f78",
       "content": "ưeegwe",
-      "postId": "add6",
+      "postId": null,
       "userId": "1",
       "date": "2025-11-18T18:29:10.106Z",
       "parentId": null,

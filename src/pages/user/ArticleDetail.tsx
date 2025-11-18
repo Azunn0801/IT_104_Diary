@@ -8,8 +8,9 @@ import type { Comment as CommentType, NewCommentData } from '../../types/Comment
 
 import './ArticleDetail.module.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { getAuth } from '../../utils/auth';
 
-const MOCK_CURRENT_USER_ID = 1; 
+const currentUser = getAuth(); 
 
 type CommentItemProps = {
   comment: CommentType;
@@ -84,12 +85,15 @@ function ArticleDetail() {
   }, [id]);
 
   const handlePostComment = async () => {
-    if (!newCommentText.trim() || !post) return;
+    if (!newCommentText.trim() || !post || !currentUser) {
+      if (!currentUser) alert("You need to log in to comment!");
+      return;
+    }
 
     const newCommentPayload: NewCommentData = {
       content: newCommentText,
       postId: post.id,
-      userId: MOCK_CURRENT_USER_ID,
+      userId: currentUser.id,
       date: new Date().toISOString(),
       parentId: null,
       likes: []
