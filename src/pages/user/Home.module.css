@@ -123,3 +123,15 @@ section>p {
   font-weight: 600;
   font-size: 24px;
 }
+
+main {
+  margin-top: 83px;
+}
+
+.my-5 {
+  margin-top: 0 !important;
+}
+
+footer a, footer p {
+  color: #18181B !important;
+}

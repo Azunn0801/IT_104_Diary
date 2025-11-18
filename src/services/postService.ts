@@ -10,7 +10,8 @@ export const getAllPosts = async (
   page: number, 
   pageSize: number,
   categoryId: number | null | string,
-  userId?: string
+  userId?: string,
+  status?: string
 ): Promise<PostsPaginatedResponse> => {
   
   let url = `/posts?_expand=user&_expand=category`;
@@ -21,6 +22,10 @@ export const getAllPosts = async (
 
   if (userId) {
     url += `&userId=${userId}`;
+  }
+
+  if (status) {
+    url += `&status=${status}`;
   }
 
   const response = await apiClient.get<Post[]>(url);

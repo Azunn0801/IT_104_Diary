@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Pagination } from 'antd';
 import type { PaginationProps } from 'antd';
 import './Home.module.css';
+import HomeFooter from '../../layouts/HomeFooter';
 
 import { getAllPosts } from '../../services/postService';
 import { getAllCategories } from '../../services/categoryService';
@@ -57,13 +58,13 @@ function Home() {
         setIsLoading(true);
         setError(null);
 
-        const response = await getAllPosts(currentPage, PAGE_SIZE, selectedCategory);
+        const response = await getAllPosts(currentPage, PAGE_SIZE, selectedCategory, undefined, "Public");
 
         setPosts(response.data);
         setTotalItems(response.totalCount);
       } catch (err) {
         console.error("Failed to fetch posts:", err);
-        setError("Không thể tải bài viết.");
+        setError("Cannot load any post.");
       } finally {
         setIsLoading(false);
       }
@@ -113,7 +114,7 @@ function Home() {
 
   return (
     <>
-      <main className="container my-5">
+      <main className="container">
 
         <section className="recent-posts">
           <p className='posts-title'>Recent blog posts</p>
@@ -121,7 +122,7 @@ function Home() {
             {recentPosts.length > 0 ? (
               recentPosts.map(post => renderPostCard(post))
             ) : (
-              <p className="text-center">Chưa có bài viết gần đây.</p>
+              <p className="text-center">There's no recent post.</p>
             )}
           </div>
         </section>
@@ -159,7 +160,7 @@ function Home() {
           ) : (
             <div className="row">
               {posts.length === 0 ? (
-                <p className="text-center">Không tìm thấy bài viết nào.</p>
+                <p className="text-center">Cannot find any post.</p>
               ) : (
                 posts.map(post => renderPostCard(post))
               )}
@@ -179,6 +180,7 @@ function Home() {
         </nav>
       </main>
 
+      <HomeFooter />
     </>
   );
 }

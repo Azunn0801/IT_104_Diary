@@ -40,8 +40,8 @@ function AppRoutes() {
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
 
-      <Route element={<ProtectedRoute />}> 
-        <Route element={<AdminLayout />}>  
+      <Route element={<ProtectedRoute />}>
+        <Route element={<AdminLayout />}>
           <Route path='/admin/user-manager' element={<ManagerUsers />} />
           <Route path='/admin/dashboard' element={<Dashboard />} />
           <Route path="category-manager" element={<ManagerCategory />} />

@@ -157,7 +157,7 @@
       "content": "React là một thư viện JavaScript phổ biến... RTK Query giúp việc gọi API trở nên đơn giản hơn bao giờ hết.",
       "pictureUrl": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070",
       "date": "2025-10-28T10:00:00Z",
-      "userId": 1,
+      "userId": "1",
       "categoryId": 1,
       "likes": [
         2,
@@ -171,7 +171,7 @@
       "content": "Code sạch không chỉ giúp bạn mà còn giúp đồng nghiệp... 1. Đặt tên biến rõ ràng. 2. Nguyên tắc DRY...",
       "pictureUrl": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070",
       "date": "2025-10-29T09:30:00Z",
-      "userId": 2,
+      "userId": "2",
       "categoryId": 3,
       "likes": [
         1
@@ -184,7 +184,7 @@
       "content": "Today was a really productive day at work. I managed to finish a report ahead of schedule and received positive feedback from my manager.",
       "pictureUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070",
       "date": "2025-02-25T09:00:00Z",
-      "userId": 3,
+      "userId": "3",
       "categoryId": 4,
       "likes": [
         1,
@@ -199,7 +199,7 @@
       "content": "I had my first job interview today! I was nervous at first, but as the conversation went on, I felt more confident.",
       "pictureUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974",
       "date": "2025-02-24T14:00:00Z",
-      "userId": 4,
+      "userId": "4",
       "categoryId": 5,
       "likes": [
         2,
@@ -215,7 +215,7 @@
       "content": "Lately, I have been overthinking everything. From small decisions to bigger life choices. I know I should trust myself more.",
       "pictureUrl": "https://images.unsplash.com/photo-1589110439369-03c02821b06c?q=80&w=2070",
       "date": "2025-02-23T11:00:00Z",
-      "userId": 5,
+      "userId": "5",
       "categoryId": 6,
       "likes": [
         1
@@ -228,7 +228,7 @@
       "content": "Our teams are stronger, and our individual designs better, when we collaborate. Our individual designs stronger, and our teams better.",
       "pictureUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1974",
       "date": "2025-02-18T16:00:00Z",
-      "userId": 6,
+      "userId": "6",
       "categoryId": 5,
       "likes": [
         3,
@@ -242,7 +242,7 @@
       "content": "JavaScript frameworks make development easy with extensive features and functionalities. Here are our top 10 picks for 2025.",
       "pictureUrl": "https://images.unsplash.com/photo-1610986602538-43b683d7c744?q=80&w=2069",
       "date": "2025-02-15T10:00:00Z",
-      "userId": 7,
+      "userId": "7",
       "categoryId": 1,
       "likes": [
         1,
@@ -259,7 +259,7 @@
       "content": "Starting a community doesn't need to be complicated, but how do you get started? Listen to our latest podcast episode on CX.",
       "pictureUrl": "https://images.unsplash.com/photo-1590602843685-391d41c39feb?q=80&w=1974",
       "date": "2025-02-05T08:00:00Z",
-      "userId": 8,
+      "userId": "8",
       "categoryId": 7,
       "likes": [
         10
